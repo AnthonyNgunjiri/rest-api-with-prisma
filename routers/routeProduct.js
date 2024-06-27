@@ -5,6 +5,14 @@ import { PrismaClient } from "@prisma/client";
 const route = Router();
 const prisma = new PrismaClient();
 
+route.get("/", async (req, res) => {
+  try {
+    const Products = await prisma.products.findMany();
+    res.status(200).json(Products);
+  } catch (e) {
+    res.status(500).json({ success: false, message: e.message });
+  }
+});
 
 route.get("/:id", async (req, res) => {
   const id = req.params.id;
