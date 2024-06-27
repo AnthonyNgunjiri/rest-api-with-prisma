@@ -102,9 +102,9 @@ route.delete("/:id", async (req, res) => {
     const deleteProducts = await prisma.products.delete({
       where: { id: id },
     });
-    res.status(200).json({ deleteProducts });
+    res.status(200).json({ deleteProducts })
   } catch (e) {
-    res.status(500).json({ success: false, message: e.message });
+    res.status(500).json({ success: false, message: e.message })
   }
 });
 
